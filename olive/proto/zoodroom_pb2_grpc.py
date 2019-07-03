@@ -4,7 +4,7 @@ from olive.proto import zoodroom_pb2 as zoodroom__pb2
 
 
 class CranberryServiceStub(object):
-  """python -m grpc_tools.protoc -I./ --python_out=. --grpc_python_out=. ./zoodroom.proto
+  """python3 -m grpc_tools.protoc -I./ --python_out=. --grpc_python_out=. ./zoodroom.proto
   ----------------- Cranberry service (OAuth 2.0) -----------------
 
   """
@@ -30,10 +30,15 @@ class CranberryServiceStub(object):
         request_serializer=zoodroom__pb2.VerifyAccessTokenRequest.SerializeToString,
         response_deserializer=zoodroom__pb2.VerifyAccessTokenResponse.FromString,
         )
+    self.GetClientByClientId = channel.unary_unary(
+        '/zoodroom.CranberryService/GetClientByClientId',
+        request_serializer=zoodroom__pb2.GetClientByClientIdRequest.SerializeToString,
+        response_deserializer=zoodroom__pb2.GetClientByClientIdResponse.FromString,
+        )
 
 
 class CranberryServiceServicer(object):
-  """python -m grpc_tools.protoc -I./ --python_out=. --grpc_python_out=. ./zoodroom.proto
+  """python3 -m grpc_tools.protoc -I./ --python_out=. --grpc_python_out=. ./zoodroom.proto
   ----------------- Cranberry service (OAuth 2.0) -----------------
 
   """
@@ -59,6 +64,13 @@ class CranberryServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetClientByClientId(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_CranberryServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -76,6 +88,11 @@ def add_CranberryServiceServicer_to_server(servicer, server):
           servicer.VerifyAccessToken,
           request_deserializer=zoodroom__pb2.VerifyAccessTokenRequest.FromString,
           response_serializer=zoodroom__pb2.VerifyAccessTokenResponse.SerializeToString,
+      ),
+      'GetClientByClientId': grpc.unary_unary_rpc_method_handler(
+          servicer.GetClientByClientId,
+          request_deserializer=zoodroom__pb2.GetClientByClientIdRequest.FromString,
+          response_serializer=zoodroom__pb2.GetClientByClientIdResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

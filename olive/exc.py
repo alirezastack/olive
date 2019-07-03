@@ -22,3 +22,7 @@ class ClientNotFound(Exception):
 
 class AccessTokenNotFound(Exception):
     pass
+
+
+class DuplicateClient(Exception):
+    pass

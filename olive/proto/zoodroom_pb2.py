@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='zoodroom',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0ezoodroom.proto\x12\x08zoodroom\"\x85\x01\n&ResourceOwnerPasswordCredentialRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\x12\x10\n\x08password\x18\x04 \x01(\t\x12\r\n\x05scope\x18\x05 \x01(\t\"\x99\x01\n\'ResourceOwnerPasswordCredentialResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x15\n\rrefresh_token\x18\x02 \x01(\t\x12\x12\n\nexpires_in\x18\x03 \x01(\x05\x12\r\n\x05scope\x18\x04 \x01(\t\x12\x1e\n\x05\x65rror\x18\x05 \x01(\x0b\x32\x0f.zoodroom.Error\"\x8e\x01\n\x13\x43reateClientRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\x12\x18\n\x10redirection_uris\x18\x03 \x03(\t\x12\x10\n\x08\x66ullname\x18\x04 \x01(\t\x12\x0c\n\x04logo\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x06 \x01(\t\"G\n\x14\x43reateClientResponse\x12\x0f\n\x07\x63reated\x18\x01 \x01(\x08\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"C\n\x18VerifyAccessTokenRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x02 \x01(\t\";\n\x19VerifyAccessTokenResponse\x12\x1e\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x0f.zoodroom.Error\"7\n\x05\x45rror\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0f\n\x07\x64\x65tails\x18\x03 \x01(\t2\xce\x02\n\x10\x43ranberryService\x12\x88\x01\n\x1fResourceOwnerPasswordCredential\x12\x30.zoodroom.ResourceOwnerPasswordCredentialRequest\x1a\x31.zoodroom.ResourceOwnerPasswordCredentialResponse\"\x00\x12O\n\x0c\x43reateClient\x12\x1d.zoodroom.CreateClientRequest\x1a\x1e.zoodroom.CreateClientResponse\"\x00\x12^\n\x11VerifyAccessToken\x12\".zoodroom.VerifyAccessTokenRequest\x1a#.zoodroom.VerifyAccessTokenResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0ezoodroom.proto\x12\x08zoodroom\"\x85\x01\n&ResourceOwnerPasswordCredentialRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\x12\x10\n\x08password\x18\x04 \x01(\t\x12\r\n\x05scope\x18\x05 \x01(\t\"\x99\x01\n\'ResourceOwnerPasswordCredentialResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x15\n\rrefresh_token\x18\x02 \x01(\t\x12\x12\n\nexpires_in\x18\x03 \x01(\x05\x12\r\n\x05scope\x18\x04 \x01(\t\x12\x1e\n\x05\x65rror\x18\x05 \x01(\x0b\x32\x0f.zoodroom.Error\"\x8e\x01\n\x13\x43reateClientRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\x12\x18\n\x10redirection_uris\x18\x03 \x03(\t\x12\x10\n\x08\x66ullname\x18\x04 \x01(\t\x12\x0c\n\x04logo\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x06 \x01(\t\"G\n\x14\x43reateClientResponse\x12\x0f\n\x07\x63reated\x18\x01 \x01(\x08\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"C\n\x18VerifyAccessTokenRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x02 \x01(\t\";\n\x19VerifyAccessTokenResponse\x12\x1e\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x0f.zoodroom.Error\"/\n\x1aGetClientByClientIdRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\"\xb6\x01\n\x1bGetClientByClientIdResponse\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\x12\x18\n\x10redirection_uris\x18\x03 \x03(\t\x12\x10\n\x08\x66ullname\x18\x04 \x01(\t\x12\x0c\n\x04logo\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x06 \x01(\t\x12\x1e\n\x05\x65rror\x18\x07 \x01(\x0b\x32\x0f.zoodroom.Error\"7\n\x05\x45rror\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0f\n\x07\x64\x65tails\x18\x03 \x01(\t2\xb4\x03\n\x10\x43ranberryService\x12\x88\x01\n\x1fResourceOwnerPasswordCredential\x12\x30.zoodroom.ResourceOwnerPasswordCredentialRequest\x1a\x31.zoodroom.ResourceOwnerPasswordCredentialResponse\"\x00\x12O\n\x0c\x43reateClient\x12\x1d.zoodroom.CreateClientRequest\x1a\x1e.zoodroom.CreateClientResponse\"\x00\x12^\n\x11VerifyAccessToken\x12\".zoodroom.VerifyAccessTokenRequest\x1a#.zoodroom.VerifyAccessTokenResponse\"\x00\x12\x64\n\x13GetClientByClientId\x12$.zoodroom.GetClientByClientIdRequest\x1a%.zoodroom.GetClientByClientIdResponse\"\x00\x62\x06proto3')
 )
 
 
@@ -317,6 +317,110 @@ _VERIFYACCESSTOKENRESPONSE = _descriptor.Descriptor(
 )
 
 
+_GETCLIENTBYCLIENTIDREQUEST = _descriptor.Descriptor(
+  name='GetClientByClientIdRequest',
+  full_name='zoodroom.GetClientByClientIdRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='client_id', full_name='zoodroom.GetClientByClientIdRequest.client_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=668,
+  serialized_end=715,
+)
+
+
+_GETCLIENTBYCLIENTIDRESPONSE = _descriptor.Descriptor(
+  name='GetClientByClientIdResponse',
+  full_name='zoodroom.GetClientByClientIdResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='client_id', full_name='zoodroom.GetClientByClientIdResponse.client_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='client_secret', full_name='zoodroom.GetClientByClientIdResponse.client_secret', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='redirection_uris', full_name='zoodroom.GetClientByClientIdResponse.redirection_uris', index=2,
+      number=3, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='fullname', full_name='zoodroom.GetClientByClientIdResponse.fullname', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='logo', full_name='zoodroom.GetClientByClientIdResponse.logo', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='description', full_name='zoodroom.GetClientByClientIdResponse.description', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='zoodroom.GetClientByClientIdResponse.error', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=718,
+  serialized_end=900,
+)
+
+
 _ERROR = _descriptor.Descriptor(
   name='Error',
   full_name='zoodroom.Error',
@@ -357,19 +461,22 @@ _ERROR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=668,
-  serialized_end=723,
+  serialized_start=902,
+  serialized_end=957,
 )
 
 _RESOURCEOWNERPASSWORDCREDENTIALRESPONSE.fields_by_name['error'].message_type = _ERROR
 _CREATECLIENTRESPONSE.fields_by_name['error'].message_type = _ERROR
 _VERIFYACCESSTOKENRESPONSE.fields_by_name['error'].message_type = _ERROR
+_GETCLIENTBYCLIENTIDRESPONSE.fields_by_name['error'].message_type = _ERROR
 DESCRIPTOR.message_types_by_name['ResourceOwnerPasswordCredentialRequest'] = _RESOURCEOWNERPASSWORDCREDENTIALREQUEST
 DESCRIPTOR.message_types_by_name['ResourceOwnerPasswordCredentialResponse'] = _RESOURCEOWNERPASSWORDCREDENTIALRESPONSE
 DESCRIPTOR.message_types_by_name['CreateClientRequest'] = _CREATECLIENTREQUEST
 DESCRIPTOR.message_types_by_name['CreateClientResponse'] = _CREATECLIENTRESPONSE
 DESCRIPTOR.message_types_by_name['VerifyAccessTokenRequest'] = _VERIFYACCESSTOKENREQUEST
 DESCRIPTOR.message_types_by_name['VerifyAccessTokenResponse'] = _VERIFYACCESSTOKENRESPONSE
+DESCRIPTOR.message_types_by_name['GetClientByClientIdRequest'] = _GETCLIENTBYCLIENTIDREQUEST
+DESCRIPTOR.message_types_by_name['GetClientByClientIdResponse'] = _GETCLIENTBYCLIENTIDRESPONSE
 DESCRIPTOR.message_types_by_name['Error'] = _ERROR
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -415,6 +522,20 @@ VerifyAccessTokenResponse = _reflection.GeneratedProtocolMessageType('VerifyAcce
   ))
 _sym_db.RegisterMessage(VerifyAccessTokenResponse)
 
+GetClientByClientIdRequest = _reflection.GeneratedProtocolMessageType('GetClientByClientIdRequest', (_message.Message,), dict(
+  DESCRIPTOR = _GETCLIENTBYCLIENTIDREQUEST,
+  __module__ = 'zoodroom_pb2'
+  # @@protoc_insertion_point(class_scope:zoodroom.GetClientByClientIdRequest)
+  ))
+_sym_db.RegisterMessage(GetClientByClientIdRequest)
+
+GetClientByClientIdResponse = _reflection.GeneratedProtocolMessageType('GetClientByClientIdResponse', (_message.Message,), dict(
+  DESCRIPTOR = _GETCLIENTBYCLIENTIDRESPONSE,
+  __module__ = 'zoodroom_pb2'
+  # @@protoc_insertion_point(class_scope:zoodroom.GetClientByClientIdResponse)
+  ))
+_sym_db.RegisterMessage(GetClientByClientIdResponse)
+
 Error = _reflection.GeneratedProtocolMessageType('Error', (_message.Message,), dict(
   DESCRIPTOR = _ERROR,
   __module__ = 'zoodroom_pb2'
@@ -430,8 +551,8 @@ _CRANBERRYSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=726,
-  serialized_end=1060,
+  serialized_start=960,
+  serialized_end=1396,
   methods=[
   _descriptor.MethodDescriptor(
     name='ResourceOwnerPasswordCredential',
@@ -458,6 +579,15 @@ _CRANBERRYSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_VERIFYACCESSTOKENREQUEST,
     output_type=_VERIFYACCESSTOKENRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetClientByClientId',
+    full_name='zoodroom.CranberryService.GetClientByClientId',
+    index=3,
+    containing_service=None,
+    input_type=_GETCLIENTBYCLIENTIDREQUEST,
+    output_type=_GETCLIENTBYCLIENTIDRESPONSE,
     serialized_options=None,
   ),
 ])

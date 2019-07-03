@@ -10,6 +10,7 @@ service CranberryService {
     rpc ResourceOwnerPasswordCredential(ResourceOwnerPasswordCredentialRequest) returns (ResourceOwnerPasswordCredentialResponse) {}
     rpc CreateClient(CreateClientRequest) returns (CreateClientResponse) {}
     rpc VerifyAccessToken(VerifyAccessTokenRequest) returns (VerifyAccessTokenResponse) {}
+    rpc GetClientByClientId(GetClientByClientIdRequest) returns (GetClientByClientIdResponse) {}
 }
 
 message ResourceOwnerPasswordCredentialRequest {
@@ -49,6 +50,20 @@ message VerifyAccessTokenRequest {
 
 message VerifyAccessTokenResponse {
     Error error = 1;
+}
+
+message GetClientByClientIdRequest {
+    string client_id = 1;
+}
+
+message GetClientByClientIdResponse {
+    string client_id = 1;
+    string client_secret = 2;
+    repeated string redirection_uris = 3;
+    string fullname = 4;
+    string logo = 5;
+    string description = 6;
+    Error error = 7;
 }
 
 // ----------------- Error Payload -----------------
