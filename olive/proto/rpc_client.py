@@ -6,7 +6,6 @@ import logging
 import grpc
 import os
 
-
 _DEFAULT_SERVICE_HOST = '[::]'
 _DEFAULT_SERVICE_PORT = '9000'
 
@@ -36,7 +35,7 @@ class RPCClient:
     # Method name:      YourMethodName          -> AddItem
     # Method input:     YourMethodNameRequest   -> AddItemRequest
     # Method response:  YourMethodNameResponse  -> AddItemResponse
-    @retry(exceptions=(RpcError, ),
+    @retry(exceptions=(RpcError,),
            tries=_DEFAULT_RETRY_COUNT,
            delay=_DEFAULT_RETRY_DELAY,
            backoff=_DEFAULT_RETRY_BACKOFF)

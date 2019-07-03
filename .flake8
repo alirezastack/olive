@@ -1,0 +1,3 @@
+[flake8]
+exclude = olive/proto/zoodroom_pb2.py, olive/proto/zoodroom_pb2_grpc.py
+max-line-length=120

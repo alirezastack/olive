@@ -5,5 +5,6 @@ class Authentication:
     def __init__(self):
         pass
 
-    def generate_token(self, prefix):
+    @staticmethod
+    def generate_token(prefix):
         return '{}:{}'.format(prefix, uuid4().hex)
