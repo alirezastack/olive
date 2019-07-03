@@ -1,0 +1,60 @@
+// Protocol Buffers Language version
+syntax = "proto3";
+
+package zoodroom;
+
+// python3 -m grpc_tools.protoc -I./ --python_out=. --grpc_python_out=. ./zoodroom.proto
+// ----------------- Cranberry service (OAuth 2.0) -----------------
+
+service CranberryService {
+    rpc ResourceOwnerPasswordCredential(ResourceOwnerPasswordCredentialRequest) returns (ResourceOwnerPasswordCredentialResponse) {}
+    rpc CreateClient(CreateClientRequest) returns (CreateClientResponse) {}
+    rpc VerifyAccessToken(VerifyAccessTokenRequest) returns (VerifyAccessTokenResponse) {}
+}
+
+message ResourceOwnerPasswordCredentialRequest {
+    string client_id = 1;
+    string client_secret = 2;
+    string username = 3;
+    string password = 4;
+    string scope = 5;
+}
+
+message ResourceOwnerPasswordCredentialResponse {
+    string access_token = 1;
+    string refresh_token = 2;
+    int32 expires_in = 3;
+    string scope = 4;
+    Error error = 5;
+}
+
+message CreateClientRequest {
+    string client_id = 1;
+    string client_secret = 2;
+    repeated string redirection_uris = 3;
+    string fullname = 4;
+    string logo = 5;
+    string description = 6;
+}
+
+message CreateClientResponse {
+    bool created = 1;
+    Error error = 2;
+}
+
+message VerifyAccessTokenRequest {
+    string client_id = 1;
+    string access_token = 2;
+}
+
+message VerifyAccessTokenResponse {
+    Error error = 1;
+}
+
+// ----------------- Error Payload -----------------
+
+message Error {
+    string code = 1;
+    string message = 2;
+    string details = 3;
+}
