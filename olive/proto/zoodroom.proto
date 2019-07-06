@@ -36,6 +36,7 @@ message CreateClientRequest {
     string fullname = 4;
     string logo = 5;
     string description = 6;
+    string is_active = 7;
 }
 
 message CreateClientResponse {
