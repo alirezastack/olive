@@ -3,7 +3,7 @@ syntax = "proto3";
 
 package zoodroom;
 
-// python3 -m grpc_tools.protoc -I./ --python_out=. --grpc_python_out=. ./zoodroom.proto
+// python3 -m grpc_tools.protoc -I./ --python_out=. --grpc_python_out=. olive/proto/zoodroom.proto
 // ----------------- Cranberry service (OAuth 2.0) -----------------
 
 service CranberryService {
@@ -11,6 +11,8 @@ service CranberryService {
     rpc CreateClient(CreateClientRequest) returns (CreateClientResponse) {}
     rpc VerifyAccessToken(VerifyAccessTokenRequest) returns (VerifyAccessTokenResponse) {}
     rpc GetClientByClientId(GetClientByClientIdRequest) returns (GetClientByClientIdResponse) {}
+//    rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse) {}
+//    rpc RevokeAccessToken(RevokeAccessTokenRequest) returns (RevokeAccessTokenResponse) {}
 }
 
 message ResourceOwnerPasswordCredentialRequest {
@@ -18,14 +20,14 @@ message ResourceOwnerPasswordCredentialRequest {
     string client_secret = 2;
     string username = 3;
     string password = 4;
-    string scope = 5;
+    repeated string scope = 5;
 }
 
 message ResourceOwnerPasswordCredentialResponse {
     string access_token = 1;
     string refresh_token = 2;
     int32 expires_in = 3;
-    string scope = 4;
+    repeated string scope = 4;
     Error error = 5;
 }
 
@@ -36,7 +38,7 @@ message CreateClientRequest {
     string fullname = 4;
     string logo = 5;
     string description = 6;
-    string is_active = 7;
+    bool is_active = 7;
 }
 
 message CreateClientResponse {
@@ -67,10 +69,25 @@ message GetClientByClientIdResponse {
     Error error = 7;
 }
 
+message RefreshTokenRequest {
+    string client_id = 1;
+    string client_secret = 2;
+    string refresh_token = 3;
+    string grant_type = 4;
+    repeated string scope = 5;
+}
+
+message RefreshTokenResponse {
+    string access_token = 1;
+    string refresh_token = 4;
+    repeated string scope = 2;
+    int32 expires_in = 3;
+}
+
 // ----------------- Error Payload -----------------
 
 message Error {
     string code = 1;
     string message = 2;
-    string details = 3;
+    repeated string details = 3;
 }
