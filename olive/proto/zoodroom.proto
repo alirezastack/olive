@@ -11,7 +11,7 @@ service CranberryService {
     rpc CreateClient(CreateClientRequest) returns (CreateClientResponse) {}
     rpc VerifyAccessToken(VerifyAccessTokenRequest) returns (VerifyAccessTokenResponse) {}
     rpc GetClientByClientId(GetClientByClientIdRequest) returns (GetClientByClientIdResponse) {}
-//    rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse) {}
+    rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse) {}
 //    rpc RevokeAccessToken(RevokeAccessTokenRequest) returns (RevokeAccessTokenResponse) {}
 }
 
@@ -79,9 +79,10 @@ message RefreshTokenRequest {
 
 message RefreshTokenResponse {
     string access_token = 1;
-    string refresh_token = 4;
-    repeated string scope = 2;
-    int32 expires_in = 3;
+    string refresh_token = 2;
+    repeated string scope = 3;
+    int32 expires_in = 4;
+    Error error = 5;
 }
 
 // ----------------- Error Payload -----------------

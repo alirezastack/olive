@@ -1,4 +1,4 @@
-from olive.proto import zoodroom_pb2, zoodroom_pb2_grpc
+from olive.proto import zoodroom_pb2_grpc
 from olive.toolbox import get_caller_name
 from olive.proto import zoodroom_pb2
 from olive.exc import QuitException
