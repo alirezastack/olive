@@ -36,6 +36,11 @@ class CranberryServiceStub(object):
         request_serializer=olive_dot_proto_dot_zoodroom__pb2.GetClientByClientIdRequest.SerializeToString,
         response_deserializer=olive_dot_proto_dot_zoodroom__pb2.GetClientByClientIdResponse.FromString,
         )
+    self.RefreshToken = channel.unary_unary(
+        '/zoodroom.CranberryService/RefreshToken',
+        request_serializer=olive_dot_proto_dot_zoodroom__pb2.RefreshTokenRequest.SerializeToString,
+        response_deserializer=olive_dot_proto_dot_zoodroom__pb2.RefreshTokenResponse.FromString,
+        )
 
 
 class CranberryServiceServicer(object):
@@ -72,6 +77,13 @@ class CranberryServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def RefreshToken(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_CranberryServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -95,7 +107,56 @@ def add_CranberryServiceServicer_to_server(servicer, server):
           request_deserializer=olive_dot_proto_dot_zoodroom__pb2.GetClientByClientIdRequest.FromString,
           response_serializer=olive_dot_proto_dot_zoodroom__pb2.GetClientByClientIdResponse.SerializeToString,
       ),
+      'RefreshToken': grpc.unary_unary_rpc_method_handler(
+          servicer.RefreshToken,
+          request_deserializer=olive_dot_proto_dot_zoodroom__pb2.RefreshTokenRequest.FromString,
+          response_serializer=olive_dot_proto_dot_zoodroom__pb2.RefreshTokenResponse.SerializeToString,
+      ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
       'zoodroom.CranberryService', rpc_method_handlers)
+  server.add_generic_rpc_handlers((generic_handler,))
+
+
+class MangoServiceStub(object):
+  """----------------- Mango service (Survey) -----------------
+
+  """
+
+  def __init__(self, channel):
+    """Constructor.
+
+    Args:
+      channel: A grpc.Channel.
+    """
+    self.AddQuestion = channel.unary_unary(
+        '/zoodroom.MangoService/AddQuestion',
+        request_serializer=olive_dot_proto_dot_zoodroom__pb2.AddQuestionRequest.SerializeToString,
+        response_deserializer=olive_dot_proto_dot_zoodroom__pb2.AddQuestionResponse.FromString,
+        )
+
+
+class MangoServiceServicer(object):
+  """----------------- Mango service (Survey) -----------------
+
+  """
+
+  def AddQuestion(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+
+def add_MangoServiceServicer_to_server(servicer, server):
+  rpc_method_handlers = {
+      'AddQuestion': grpc.unary_unary_rpc_method_handler(
+          servicer.AddQuestion,
+          request_deserializer=olive_dot_proto_dot_zoodroom__pb2.AddQuestionRequest.FromString,
+          response_serializer=olive_dot_proto_dot_zoodroom__pb2.AddQuestionResponse.SerializeToString,
+      ),
+  }
+  generic_handler = grpc.method_handlers_generic_handler(
+      'zoodroom.MangoService', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))

@@ -12,6 +12,11 @@ class CranberryServiceError(Exception):
     pass
 
 
+class MangoServiceError(Exception):
+    """Generic errors."""
+    pass
+
+
 class QuitException(Exception):
     pass
 
@@ -25,6 +30,10 @@ class AccessTokenNotFound(Exception):
 
 
 class DuplicateClient(Exception):
+    pass
+
+
+class SaveError(Exception):
     pass
 
 

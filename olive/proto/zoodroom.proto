@@ -85,6 +85,45 @@ message RefreshTokenResponse {
     Error error = 5;
 }
 
+// ----------------- Mango service (Survey) -----------------
+
+service MangoService {
+    rpc AddQuestion(AddQuestionRequest) returns (AddQuestionResponse) {}
+}
+
+message AddQuestionRequest {
+    QuestionTitle title = 1;
+    repeated string include_in = 2;
+    int32 weight = 3;
+    int32 order = 4;
+    string status = 5;
+    QuestionCategory category = 6;
+    repeated QuestionRange ranges = 7;
+}
+
+message QuestionTitle {
+    string on_rate = 1;
+    string on_display = 2;
+}
+
+message QuestionCategory {
+    string title = 1;
+    string icon = 2;
+    string slug = 3;
+    int32 order = 4;
+}
+
+message QuestionRange {
+    string color = 1;
+    string range = 2;
+    string content = 3;
+}
+
+message AddQuestionResponse {
+    string question_id = 1;
+    Error error = 2;
+}
+
 // ----------------- Error Payload -----------------
 
 message Error {
