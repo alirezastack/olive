@@ -37,6 +37,10 @@ class SaveError(Exception):
     pass
 
 
+class InvalidObjectId(Exception):
+    pass
+
+
 # It is raised in case inspect.currentframe() is not implemented
 # in specific python versions like Jython, PyPy, etc.
 class PythonStackNotSupported(Exception):
