@@ -89,6 +89,7 @@ message RefreshTokenResponse {
 
 service MangoService {
     rpc AddQuestion(AddQuestionRequest) returns (AddQuestionResponse) {}
+    rpc GetQuestionById(GetQuestionByIdRequest) returns (GetQuestionByIdResponse) {}
 }
 
 message AddQuestionRequest {
@@ -124,6 +125,21 @@ message AddQuestionResponse {
     Error error = 2;
 }
 
+message GetQuestionByIdRequest {
+    string question_id = 1;
+}
+
+message GetQuestionByIdResponse {
+    string _id = 1;
+    repeated QuestionRange ranges = 2;
+    QuestionCategory category = 3;
+    QuestionTitle title = 4;
+    int32 order = 5;
+    string status = 6;
+    repeated string include_in = 7;
+    int32 weight = 8;
+    Error error = 9;
+}
 // ----------------- Error Payload -----------------
 
 message Error {

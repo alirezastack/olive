@@ -5,7 +5,7 @@ LONG_DESCRIPTION = f.read()
 f.close()
 
 setup(name='olive',
-      version='0.0.8',
+      version='0.0.9',
       description='Olive, a utility library shared across all services',
       long_description=LONG_DESCRIPTION,
       long_description_content_type='text/markdown',
