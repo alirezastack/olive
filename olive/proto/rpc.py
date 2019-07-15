@@ -78,15 +78,14 @@ class GRPCServerBase:
 
 class RPCClient:
     def __init__(self, service, timeout=_DEFAULT_RPC_CALL_TIMEOUT):
-        # get host and port based on service name
-        self.service = service
+        self.service = service.lower()
         self.timeout = timeout
         host = os.environ.get('{}_HOST'.format(self.service.upper()), _DEFAULT_SERVICE_HOST)
         port = os.environ.get('{}_PORT'.format(self.service.upper()), _DEFAULT_SERVICE_PORT)
-        logging.debug('connecting to {}:{} {} gRPC...'.format(host, port, service))
+        logging.debug('connecting to {}:{} {} gRPC...'.format(host, port, self.service))
         # get service address port by its environment variable
         self.channel = grpc.insecure_channel('{}:{}'.format(host, port))
-        logging.debug('Successfully connected to {} service :)'.format(service))
+        logging.debug('Successfully connected to {} service :)'.format(self.service))
 
     # Protocol of services & methods are as below:
     # Service name:     YourservicenameService  -> CartService
