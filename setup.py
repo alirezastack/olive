@@ -4,8 +4,11 @@ f = open('README.md', 'r')
 LONG_DESCRIPTION = f.read()
 f.close()
 
+with open('requirements.txt') as f:
+      requirements = [r for r in f.read().splitlines() if r and not r.startswith(('#', 'flake8', 'coverage'))]
+
 setup(name='olive',
-      version='0.0.12',
+      version='0.0.13',
       description='Olive, a utility library shared across all services',
       long_description=LONG_DESCRIPTION,
       long_description_content_type='text/markdown',
@@ -16,12 +19,5 @@ setup(name='olive',
       packages=find_packages(exclude=['ez_setup', 'tests*']),
       package_data={'olive': ['proto/*.proto']},
       include_package_data=True,
-      install_requires=[
-            'grpcio==1.20.1',
-            'grpcio-tools==1.20.1',
-            'protobuf==3.7.1',
-            'retry==0.9.2',
-            'pymongo==3.8.0',
-            'marshmallow==3.0.0rc6',
-      ]
+      install_requires=requirements
       )
