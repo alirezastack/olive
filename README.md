@@ -1,6 +1,6 @@
 Olive is a module to have shared resources in one place. Some core methods like RPCClient, GRPCServer methods reside here.
 
-#Olive Structure
+# Olive Structure
  - proto
    - rpc
    - zoodroom.proto
@@ -16,14 +16,14 @@ Olive is a module to have shared resources in one place. Some core methods like 
  - validation
 
 
-#Installation:
+# Installation:
 For installation of Olive, below link is added to requirements.txt of the service:
 
 ```
 -e git+https://oauth2:Q8HLiBk95Rkqzy2Q7Kgh@git.zoodroom.com/basket/olive.git@master#egg=olive
 ```
 
-#Definition:
+# Definition:
 proto folder house anything related to gRPC (proto file, pb files, RPC client and RPC server).
 
 The store folder contains anything that is related to database connection or models which is common across services. 
@@ -43,10 +43,10 @@ validation: any method related to validation is here like is_url_valid.
 Shared libraries between modules like pymongo, marshmallow, etc are inside of requirements.txt which will be installed as dependency of Olive library.
 
 
-###Warning:
+### Warning:
 If you make a change in the library make sure to increase the versioning in setup.py file before the push. If it is minor bug fix increase the 3rd number if it has backward incompatible change increase the major version and so on.
 
 
-###Info:
+### Info:
 Any new library that is common between services should be put both in requirements.txt of service itself and Olive too
 
