@@ -45,3 +45,7 @@ class InvalidObjectId(Exception):
 # in specific python versions like Jython, PyPy, etc.
 class PythonStackNotSupported(Exception):
     pass
+
+
+class CacheNotFound(Exception):
+    pass
