@@ -146,4 +146,7 @@ message Error {
     string code = 1;
     string message = 2;
     repeated string details = 3;
+//    extra_info is a dictionary that can be used in the future
+//    for more elaborate error handling
+//    map<string, string> extra_info = 4;
 }
