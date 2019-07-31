@@ -98,8 +98,7 @@ message AddQuestionRequest {
     int32 weight = 3;
     int32 order = 4;
     string status = 5;
-    QuestionCategory category = 6;
-    repeated QuestionRange ranges = 7;
+    string category = 6;
 }
 
 message QuestionTitle {
@@ -107,18 +106,6 @@ message QuestionTitle {
     string on_display = 2;
 }
 
-message QuestionCategory {
-    string title = 1;
-    string icon = 2;
-    string slug = 3;
-    int32 order = 4;
-}
-
-message QuestionRange {
-    string color = 1;
-    string range = 2;
-    string content = 3;
-}
 
 message AddQuestionResponse {
     string question_id = 1;
@@ -132,7 +119,7 @@ message GetQuestionByIdRequest {
 message GetQuestionByIdResponse {
     string _id = 1;
     repeated QuestionRange ranges = 2;
-    QuestionCategory category = 3;
+    string category = 3;
     QuestionTitle title = 4;
     int32 order = 5;
     string status = 6;
@@ -140,6 +127,13 @@ message GetQuestionByIdResponse {
     int32 weight = 8;
     Error error = 9;
 }
+
+message QuestionRange {
+    string color = 1;
+    string range = 2;
+    string content = 3;
+}
+
 // ----------------- Error Payload -----------------
 
 message Error {

@@ -23,7 +23,7 @@ _DEFAULT_RETRY_COUNT = 3
 _DEFAULT_RETRY_BACKOFF = 2
 _DEFAULT_RETRY_DELAY = 2
 
-_DEFAULT_SERVER_MAX_WORKERS = 80
+_DEFAULT_SERVER_MAX_WORKERS = 1
 _DEFAULT_SERVER_MAX_CONCURRENT_RPCS = 3000
 
 _SERVER_SHUTDOWN_DEFAULT_TIMEOUT = 15
@@ -41,11 +41,11 @@ class GRPCServerBase:
         """
         # create gRPC server
         self.server = grpc.server(futures.ThreadPoolExecutor(
-            max_workers=os.environ.get('{}_MAX_WORKERS'.format(self.service_name), _DEFAULT_SERVER_MAX_WORKERS),
+            max_workers=int(os.environ.get('{}_MAX_WORKERS'.format(self.service_name), _DEFAULT_SERVER_MAX_WORKERS)),
             thread_name_prefix=self.service_name.lower()
         ),
-            maximum_concurrent_rpcs=os.environ.get('{}_MAX_CONCURRENT_RPCS'.format(self.service_name),
-                                                   _DEFAULT_SERVER_MAX_CONCURRENT_RPCS))
+            maximum_concurrent_rpcs=int(os.environ.get('{}_MAX_CONCURRENT_RPCS'.format(self.service_name),
+                                                       _DEFAULT_SERVER_MAX_CONCURRENT_RPCS)))
 
     def start(self):
         # get host and port based on service name
