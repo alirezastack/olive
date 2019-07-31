@@ -139,6 +139,11 @@ class MangoServiceStub(object):
         request_serializer=olive_dot_proto_dot_zoodroom__pb2.GetQuestionByIdRequest.SerializeToString,
         response_deserializer=olive_dot_proto_dot_zoodroom__pb2.GetQuestionByIdResponse.FromString,
         )
+    self.DeleteQuestion = channel.unary_unary(
+        '/zoodroom.MangoService/DeleteQuestion',
+        request_serializer=olive_dot_proto_dot_zoodroom__pb2.DeleteQuestionRequest.SerializeToString,
+        response_deserializer=olive_dot_proto_dot_zoodroom__pb2.DeleteQuestionResponse.FromString,
+        )
 
 
 class MangoServiceServicer(object):
@@ -160,6 +165,13 @@ class MangoServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def DeleteQuestion(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_MangoServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -172,6 +184,11 @@ def add_MangoServiceServicer_to_server(servicer, server):
           servicer.GetQuestionById,
           request_deserializer=olive_dot_proto_dot_zoodroom__pb2.GetQuestionByIdRequest.FromString,
           response_serializer=olive_dot_proto_dot_zoodroom__pb2.GetQuestionByIdResponse.SerializeToString,
+      ),
+      'DeleteQuestion': grpc.unary_unary_rpc_method_handler(
+          servicer.DeleteQuestion,
+          request_deserializer=olive_dot_proto_dot_zoodroom__pb2.DeleteQuestionRequest.FromString,
+          response_serializer=olive_dot_proto_dot_zoodroom__pb2.DeleteQuestionResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

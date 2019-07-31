@@ -25,3 +25,9 @@ class CacheWrapper(object):
         self.app.log.debug('writing cache to {}'.format(final_key))
         self.app.cache.set(key=final_key, value=ujson.dumps(value))
         self.app.log.info('cache {} saved ;)'.format(final_key))
+
+    def delete(self, key):
+        final_key = self.key_pattern.format(str(key))
+        self.app.log.debug('deleting {} cache...'.format(final_key))
+        self.app.cache.delete(final_key)
+        self.app.log.info('deleted {} cache'.format(final_key))

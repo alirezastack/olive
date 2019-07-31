@@ -49,3 +49,7 @@ class PythonStackNotSupported(Exception):
 
 class CacheNotFound(Exception):
     pass
+
+
+class DocumentNotFound(Exception):
+    pass
