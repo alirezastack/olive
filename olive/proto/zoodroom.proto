@@ -90,6 +90,7 @@ message RefreshTokenResponse {
 service MangoService {
     rpc AddQuestion(AddQuestionRequest) returns (AddQuestionResponse) {}
     rpc GetQuestionById(GetQuestionByIdRequest) returns (GetQuestionByIdResponse) {}
+    rpc DeleteQuestion(DeleteQuestionRequest) returns (DeleteQuestionResponse) {}
 }
 
 message AddQuestionRequest {
@@ -132,6 +133,14 @@ message QuestionRange {
     string color = 1;
     string range = 2;
     string content = 3;
+}
+
+message DeleteQuestionRequest {
+    string question_id = 1;
+}
+
+message DeleteQuestionResponse {
+    bool is_deleted = 1;
 }
 
 // ----------------- Error Payload -----------------
