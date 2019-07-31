@@ -9,7 +9,7 @@ class CacheWrapper(object):
         self.key_pattern = key_pattern
 
     def get_cache(self, key):
-        final_key = self.key_pattern.format(key)
+        final_key = self.key_pattern.format(str(key))
         self.app.log.debug('reading {} from cache...'.format(final_key))
         data = self.app.cache.get(final_key)
         if data is None:
