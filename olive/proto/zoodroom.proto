@@ -91,6 +91,7 @@ service MangoService {
     rpc AddQuestion(AddQuestionRequest) returns (AddQuestionResponse) {}
     rpc GetQuestionById(GetQuestionByIdRequest) returns (GetQuestionByIdResponse) {}
     rpc DeleteQuestion(DeleteQuestionRequest) returns (DeleteQuestionResponse) {}
+    rpc UpdateQuestion(UpdateQuestionRequest) returns (UpdateQuestionResponse) {}
 }
 
 message AddQuestionRequest {
@@ -141,6 +142,22 @@ message DeleteQuestionRequest {
 
 message DeleteQuestionResponse {
     bool is_deleted = 1;
+    Error error = 2;
+}
+
+message UpdateQuestionRequest {
+    string question_id = 1;
+    QuestionTitle title = 2;
+    repeated string include_in = 3;
+    int32 weight = 4;
+    int32 order = 5;
+    string status = 6;
+    string category = 7;
+}
+
+message UpdateQuestionResponse {
+    bool is_updated = 1;
+    Error error = 2;
 }
 
 // ----------------- Error Payload -----------------
