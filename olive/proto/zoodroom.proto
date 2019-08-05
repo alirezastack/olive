@@ -3,7 +3,7 @@ syntax = "proto3";
 
 package zoodroom;
 
-// python3 -m grpc_tools.protoc -I./ --python_out=. --grpc_python_out=. ./zoodroom.proto
+// python3 -m grpc_tools.protoc -I./ --python_out=. --grpc_python_out=. olive/proto/zoodroom.proto
 // ----------------- Cranberry service (OAuth 2.0) -----------------
 
 service CranberryService {
@@ -11,6 +11,8 @@ service CranberryService {
     rpc CreateClient(CreateClientRequest) returns (CreateClientResponse) {}
     rpc VerifyAccessToken(VerifyAccessTokenRequest) returns (VerifyAccessTokenResponse) {}
     rpc GetClientByClientId(GetClientByClientIdRequest) returns (GetClientByClientIdResponse) {}
+    rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse) {}
+//    rpc RevokeAccessToken(RevokeAccessTokenRequest) returns (RevokeAccessTokenResponse) {}
 }
 
 message ResourceOwnerPasswordCredentialRequest {
@@ -18,14 +20,14 @@ message ResourceOwnerPasswordCredentialRequest {
     string client_secret = 2;
     string username = 3;
     string password = 4;
-    string scope = 5;
+    repeated string scope = 5;
 }
 
 message ResourceOwnerPasswordCredentialResponse {
     string access_token = 1;
     string refresh_token = 2;
     int32 expires_in = 3;
-    string scope = 4;
+    repeated string scope = 4;
     Error error = 5;
 }
 
@@ -36,7 +38,7 @@ message CreateClientRequest {
     string fullname = 4;
     string logo = 5;
     string description = 6;
-    string is_active = 7;
+    bool is_active = 7;
 }
 
 message CreateClientResponse {
@@ -67,10 +69,104 @@ message GetClientByClientIdResponse {
     Error error = 7;
 }
 
+message RefreshTokenRequest {
+    string client_id = 1;
+    string client_secret = 2;
+    string refresh_token = 3;
+    string grant_type = 4;
+    repeated string scope = 5;
+}
+
+message RefreshTokenResponse {
+    string access_token = 1;
+    string refresh_token = 2;
+    repeated string scope = 3;
+    int32 expires_in = 4;
+    Error error = 5;
+}
+
+// ----------------- Mango service (Survey) -----------------
+
+service MangoService {
+    rpc AddQuestion(AddQuestionRequest) returns (AddQuestionResponse) {}
+    rpc GetQuestionById(GetQuestionByIdRequest) returns (GetQuestionByIdResponse) {}
+    rpc DeleteQuestion(DeleteQuestionRequest) returns (DeleteQuestionResponse) {}
+    rpc UpdateQuestion(UpdateQuestionRequest) returns (UpdateQuestionResponse) {}
+}
+
+message AddQuestionRequest {
+    QuestionTitle title = 1;
+    repeated string include_in = 2;
+    int32 weight = 3;
+    int32 order = 4;
+    string status = 5;
+    string category = 6;
+}
+
+message QuestionTitle {
+    string on_rate = 1;
+    string on_display = 2;
+}
+
+
+message AddQuestionResponse {
+    string question_id = 1;
+    Error error = 2;
+}
+
+message GetQuestionByIdRequest {
+    string question_id = 1;
+}
+
+message GetQuestionByIdResponse {
+    string _id = 1;
+    repeated QuestionRange ranges = 2;
+    string category = 3;
+    QuestionTitle title = 4;
+    int32 order = 5;
+    string status = 6;
+    repeated string include_in = 7;
+    int32 weight = 8;
+    Error error = 9;
+}
+
+message QuestionRange {
+    string color = 1;
+    string range = 2;
+    string content = 3;
+}
+
+message DeleteQuestionRequest {
+    string question_id = 1;
+}
+
+message DeleteQuestionResponse {
+    bool is_deleted = 1;
+    Error error = 2;
+}
+
+message UpdateQuestionRequest {
+    string question_id = 1;
+    QuestionTitle title = 2;
+    repeated string include_in = 3;
+    int32 weight = 4;
+    int32 order = 5;
+    string status = 6;
+    string category = 7;
+}
+
+message UpdateQuestionResponse {
+    bool is_updated = 1;
+    Error error = 2;
+}
+
 // ----------------- Error Payload -----------------
 
 message Error {
     string code = 1;
     string message = 2;
-    string details = 3;
+    repeated string details = 3;
+//    extra_info is a dictionary that can be used in the future
+//    for more elaborate error handling
+//    map<string, string> extra_info = 4;
 }

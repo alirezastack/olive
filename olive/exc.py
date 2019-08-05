@@ -12,6 +12,11 @@ class CranberryServiceError(Exception):
     pass
 
 
+class MangoServiceError(Exception):
+    """Generic errors."""
+    pass
+
+
 class QuitException(Exception):
     pass
 
@@ -28,7 +33,23 @@ class DuplicateClient(Exception):
     pass
 
 
+class SaveError(Exception):
+    pass
+
+
+class InvalidObjectId(Exception):
+    pass
+
+
 # It is raised in case inspect.currentframe() is not implemented
 # in specific python versions like Jython, PyPy, etc.
 class PythonStackNotSupported(Exception):
+    pass
+
+
+class CacheNotFound(Exception):
+    pass
+
+
+class DocumentNotFound(Exception):
     pass

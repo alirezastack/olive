@@ -1,4 +1,4 @@
-from olive.proto import zoodroom_pb2, zoodroom_pb2_grpc
+from olive.proto import zoodroom_pb2_grpc
 from olive.toolbox import get_caller_name
 from olive.proto import zoodroom_pb2
 from olive.exc import QuitException
@@ -23,7 +23,7 @@ _DEFAULT_RETRY_COUNT = 3
 _DEFAULT_RETRY_BACKOFF = 2
 _DEFAULT_RETRY_DELAY = 2
 
-_DEFAULT_SERVER_MAX_WORKERS = 80
+_DEFAULT_SERVER_MAX_WORKERS = 1
 _DEFAULT_SERVER_MAX_CONCURRENT_RPCS = 3000
 
 _SERVER_SHUTDOWN_DEFAULT_TIMEOUT = 15
@@ -41,11 +41,11 @@ class GRPCServerBase:
         """
         # create gRPC server
         self.server = grpc.server(futures.ThreadPoolExecutor(
-            max_workers=os.environ.get('{}_MAX_WORKERS'.format(self.service_name), _DEFAULT_SERVER_MAX_WORKERS),
+            max_workers=int(os.environ.get('{}_MAX_WORKERS'.format(self.service_name), _DEFAULT_SERVER_MAX_WORKERS)),
             thread_name_prefix=self.service_name.lower()
         ),
-            maximum_concurrent_rpcs=os.environ.get('{}_MAX_CONCURRENT_RPCS'.format(self.service_name),
-                                                   _DEFAULT_SERVER_MAX_CONCURRENT_RPCS))
+            maximum_concurrent_rpcs=int(os.environ.get('{}_MAX_CONCURRENT_RPCS'.format(self.service_name),
+                                                       _DEFAULT_SERVER_MAX_CONCURRENT_RPCS)))
 
     def start(self):
         # get host and port based on service name
@@ -78,15 +78,14 @@ class GRPCServerBase:
 
 class RPCClient:
     def __init__(self, service, timeout=_DEFAULT_RPC_CALL_TIMEOUT):
-        # get host and port based on service name
-        self.service = service
+        self.service = service.lower()
         self.timeout = timeout
         host = os.environ.get('{}_HOST'.format(self.service.upper()), _DEFAULT_SERVICE_HOST)
         port = os.environ.get('{}_PORT'.format(self.service.upper()), _DEFAULT_SERVICE_PORT)
-        logging.debug('connecting to {}:{} {} gRPC...'.format(host, port, service))
+        logging.debug('connecting to {}:{} {} gRPC...'.format(host, port, self.service))
         # get service address port by its environment variable
         self.channel = grpc.insecure_channel('{}:{}'.format(host, port))
-        logging.debug('Successfully connected to {} service :)'.format(service))
+        logging.debug('Successfully connected to {} service :)'.format(self.service))
 
     # Protocol of services & methods are as below:
     # Service name:     YourservicenameService  -> CartService
@@ -103,21 +102,26 @@ class RPCClient:
         :param kwargs: remote method input parameters
         :return: method response
         """
-        logging.debug('getting {} stub'.format(self.service))
-        _stub = getattr(zoodroom_pb2_grpc, '{}ServiceStub'.format(self.service.capitalize()))(self.channel)
-        logging.debug('form gRPC request with input parameters')
-        _request = getattr(zoodroom_pb2, '{}Request'.format(method))(**kwargs)
-        logging.debug('Calling {}.{}...'.format(self.service, method))
-        # .future is used to set timeout on the gRPC client
-        # old way -> res = getattr(_stub, method)(_request)
-        future_res = getattr(_stub, method).future(_request)
-        res = future_res.result(timeout=self.timeout)
-        if hasattr(res, 'error') and res.error.code:
-            logging.error('Remote rpc call error: \r\n{}'.format(res.error))
-            raise GRPCError('Remote procedure call exception', res.error)
+        try:
+            logging.debug('getting {} stub'.format(self.service))
+            _stub = getattr(zoodroom_pb2_grpc, '{}ServiceStub'.format(self.service.capitalize()))(self.channel)
+            logging.debug('form gRPC request with input parameters')
+            _request = getattr(zoodroom_pb2, '{}Request'.format(method))(**kwargs)
+            logging.debug('Calling {}.{}...'.format(self.service, method))
+            # .future is used to set timeout on the gRPC client
+            # old way -> res = getattr(_stub, method)(_request)
+            future_res = getattr(_stub, method).future(_request)
+            res = future_res.result(timeout=self.timeout)
+            if hasattr(res, 'error') and res.error.code:
+                logging.error('Remote rpc call error: \r\n{}'.format(res.error))
+                raise GRPCError('Remote procedure call exception', res.error)
 
-        logging.info('Fetched information: \r\n{}'.format(res))
-        return res
+            logging.info('Fetched information: \r\n{}'.format(res))
+            return res
+        finally:
+            logging.debug('closing gRPC channel...')
+            self.channel.close()
+            logging.info('gRPC channel closed')
 
     def call_async(self):
         pass
