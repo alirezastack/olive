@@ -93,6 +93,27 @@ service MangoService {
     rpc DeleteQuestion(DeleteQuestionRequest) returns (DeleteQuestionResponse) {}
     rpc UpdateQuestion(UpdateQuestionRequest) returns (UpdateQuestionResponse) {}
     rpc GetQuestions(GetQuestionsRequest) returns (GetQuestionsResponse) {}
+    rpc AddSurvey(AddSurveyRequest) returns (AddSurveyResponse) {}
+}
+
+message SurveyQuestion {
+    string question_id = 1;
+    int32 rating = 2;
+}
+
+message AddSurveyRequest {
+    repeated SurveyQuestion questions = 1;
+    string user_id = 2;
+    string staff_id = 3;
+    string reservation_id = 4;
+    string status = 5;
+    string content = 6;
+    string platform = 7;
+}
+
+message AddSurveyResponse {
+    string survey_id = 1;
+    Error error = 2;
 }
 
 message AddQuestionRequest {
