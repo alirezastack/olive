@@ -10,6 +10,6 @@ def to_object_id(identifier):
         object_id = ObjectId(identifier)
     except bson.errors.InvalidId:
         logging.error(traceback.format_exc())
-        raise InvalidObjectId
+        raise InvalidObjectId("objectId {} is not a valid object ID".format(identifier))
 
     return object_id
