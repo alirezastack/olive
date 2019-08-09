@@ -94,6 +94,7 @@ service MangoService {
     rpc UpdateQuestion(UpdateQuestionRequest) returns (UpdateQuestionResponse) {}
     rpc GetQuestions(GetQuestionsRequest) returns (GetQuestionsResponse) {}
     rpc AddSurvey(AddSurveyRequest) returns (AddSurveyResponse) {}
+    rpc GetSurveyByReservationId(GetSurveyByReservationIdRequest) returns (GetSurveyByReservationIdResponse) {}
 }
 
 message SurveyQuestion {
@@ -201,6 +202,24 @@ message GetQuestionsResponse {
     repeated Question questions = 1;
     Error error = 2;
 }
+
+message GetSurveyByReservationIdRequest {
+    string reservation_id = 1;
+}
+
+message GetSurveyByReservationIdResponse {
+    string _id = 1;
+    repeated SurveyQuestion questions = 2;
+    string user_id = 3;
+    string staff_id = 4;
+    string reservation_id = 5;
+    string status = 6;
+    string content = 7;
+    string platform = 8;
+    int32 total_rating = 9;
+    Error error = 10;
+}
+
 // ----------------- Error Payload -----------------
 
 message Error {
