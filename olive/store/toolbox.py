@@ -30,13 +30,13 @@ class MongoObjectId(fields.Field):
 
 
 class BaseSchema(Schema):
-    def __init__(self, id_field='_id', exclude_id=False, *args, **kwargs):
+    def __init__(self, id_field='_id', exclude_none_id=False, *args, **kwargs):
         super(BaseSchema, self).__init__(*args, **kwargs)
         self.id_field = id_field
-        self.exclude_id = exclude_id
+        self.exclude_none_id = exclude_none_id
 
     @post_dump
     def clean_dumped_id(self, data, *args, **kwargs):
-        if self.exclude_id and self.id_field in data and data[self.id_field] is None:
+        if self.exclude_none_id and self.id_field in data and data[self.id_field] is None:
             del data[self.id_field]
         return data
