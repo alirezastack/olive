@@ -8,7 +8,7 @@ with open('requirements.txt') as f:
       requirements = [r for r in f.read().splitlines() if r and not r.startswith(('#', 'flake8', 'coverage'))]
 
 setup(name='olive',
-      version='0.0.24',
+      version='0.0.25',
       description='Olive, a utility library shared across all services',
       long_description=LONG_DESCRIPTION,
       long_description_content_type='text/markdown',
