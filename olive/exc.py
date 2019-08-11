@@ -53,3 +53,7 @@ class CacheNotFound(Exception):
 
 class DocumentNotFound(Exception):
     pass
+
+
+class InvalidFilter(Exception):
+    pass
