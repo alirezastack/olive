@@ -164,6 +164,11 @@ class MangoServiceStub(object):
         request_serializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveyByReservationIdRequest.SerializeToString,
         response_deserializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveyByReservationIdResponse.FromString,
         )
+    self.GetSurveys = channel.unary_unary(
+        '/zoodroom.MangoService/GetSurveys',
+        request_serializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveysRequest.SerializeToString,
+        response_deserializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveysResponse.FromString,
+        )
 
 
 class MangoServiceServicer(object):
@@ -220,6 +225,13 @@ class MangoServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetSurveys(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_MangoServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -257,6 +269,11 @@ def add_MangoServiceServicer_to_server(servicer, server):
           servicer.GetSurveyByReservationId,
           request_deserializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveyByReservationIdRequest.FromString,
           response_serializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveyByReservationIdResponse.SerializeToString,
+      ),
+      'GetSurveys': grpc.unary_unary_rpc_method_handler(
+          servicer.GetSurveys,
+          request_deserializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveysRequest.FromString,
+          response_serializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveysResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
