@@ -149,6 +149,26 @@ class MangoServiceStub(object):
         request_serializer=olive_dot_proto_dot_zoodroom__pb2.UpdateQuestionRequest.SerializeToString,
         response_deserializer=olive_dot_proto_dot_zoodroom__pb2.UpdateQuestionResponse.FromString,
         )
+    self.GetQuestions = channel.unary_unary(
+        '/zoodroom.MangoService/GetQuestions',
+        request_serializer=olive_dot_proto_dot_zoodroom__pb2.GetQuestionsRequest.SerializeToString,
+        response_deserializer=olive_dot_proto_dot_zoodroom__pb2.GetQuestionsResponse.FromString,
+        )
+    self.AddSurvey = channel.unary_unary(
+        '/zoodroom.MangoService/AddSurvey',
+        request_serializer=olive_dot_proto_dot_zoodroom__pb2.AddSurveyRequest.SerializeToString,
+        response_deserializer=olive_dot_proto_dot_zoodroom__pb2.AddSurveyResponse.FromString,
+        )
+    self.GetSurveyByReservationId = channel.unary_unary(
+        '/zoodroom.MangoService/GetSurveyByReservationId',
+        request_serializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveyByReservationIdRequest.SerializeToString,
+        response_deserializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveyByReservationIdResponse.FromString,
+        )
+    self.GetSurveys = channel.unary_unary(
+        '/zoodroom.MangoService/GetSurveys',
+        request_serializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveysRequest.SerializeToString,
+        response_deserializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveysResponse.FromString,
+        )
 
 
 class MangoServiceServicer(object):
@@ -184,6 +204,34 @@ class MangoServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetQuestions(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def AddSurvey(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetSurveyByReservationId(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetSurveys(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_MangoServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -206,6 +254,26 @@ def add_MangoServiceServicer_to_server(servicer, server):
           servicer.UpdateQuestion,
           request_deserializer=olive_dot_proto_dot_zoodroom__pb2.UpdateQuestionRequest.FromString,
           response_serializer=olive_dot_proto_dot_zoodroom__pb2.UpdateQuestionResponse.SerializeToString,
+      ),
+      'GetQuestions': grpc.unary_unary_rpc_method_handler(
+          servicer.GetQuestions,
+          request_deserializer=olive_dot_proto_dot_zoodroom__pb2.GetQuestionsRequest.FromString,
+          response_serializer=olive_dot_proto_dot_zoodroom__pb2.GetQuestionsResponse.SerializeToString,
+      ),
+      'AddSurvey': grpc.unary_unary_rpc_method_handler(
+          servicer.AddSurvey,
+          request_deserializer=olive_dot_proto_dot_zoodroom__pb2.AddSurveyRequest.FromString,
+          response_serializer=olive_dot_proto_dot_zoodroom__pb2.AddSurveyResponse.SerializeToString,
+      ),
+      'GetSurveyByReservationId': grpc.unary_unary_rpc_method_handler(
+          servicer.GetSurveyByReservationId,
+          request_deserializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveyByReservationIdRequest.FromString,
+          response_serializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveyByReservationIdResponse.SerializeToString,
+      ),
+      'GetSurveys': grpc.unary_unary_rpc_method_handler(
+          servicer.GetSurveys,
+          request_deserializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveysRequest.FromString,
+          response_serializer=olive_dot_proto_dot_zoodroom__pb2.GetSurveysResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
