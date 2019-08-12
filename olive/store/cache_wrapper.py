@@ -31,3 +31,8 @@ class CacheWrapper(object):
         self.app.log.debug('deleting {} cache...'.format(final_key))
         self.app.cache.delete(final_key)
         self.app.log.info('deleted {} cache'.format(final_key))
+
+    def delete_by_pattern(self, pattern):
+        self.app.log.debug('deleting cache with the pattern: {}'.format(pattern))
+        self.app.cache.delete_by_pattern(pattern)
+        self.app.log.info('{} cache pattern keys are purged'.format(pattern))
