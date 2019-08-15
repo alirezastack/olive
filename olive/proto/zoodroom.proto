@@ -96,6 +96,7 @@ service MangoService {
     rpc AddSurvey(AddSurveyRequest) returns (AddSurveyResponse) {}
     rpc GetSurveyByReservationId(GetSurveyByReservationIdRequest) returns (GetSurveyByReservationIdResponse) {}
     rpc GetSurveys(GetSurveysRequest) returns (GetSurveysResponse) {}
+    rpc StreamGetSurveys(StreamGetSurveysRequest) returns (stream StreamGetSurveysResponse) {}
 }
 
 message SurveyQuestion {
@@ -242,6 +243,15 @@ message Survey {
     string content = 7;
     string platform = 8;
     int32 total_rating = 9;
+}
+
+message StreamGetSurveysRequest {
+
+}
+
+message StreamGetSurveysResponse {
+    Survey survey = 1;
+    Error error = 2;
 }
 
 // ----------------- Error Payload -----------------

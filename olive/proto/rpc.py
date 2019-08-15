@@ -96,9 +96,10 @@ class RPCClient:
            tries=_DEFAULT_RETRY_COUNT,
            delay=_DEFAULT_RETRY_DELAY,
            backoff=_DEFAULT_RETRY_BACKOFF)
-    def call(self, method, **kwargs):
+    def call(self, method, stream=False, **kwargs):
         """
         :param method: remote gRPC method name
+        :param stream: stream response to client
         :param kwargs: remote method input parameters
         :return: method response
         """
@@ -108,20 +109,32 @@ class RPCClient:
             logging.debug('form gRPC request with input parameters')
             _request = getattr(zoodroom_pb2, '{}Request'.format(method))(**kwargs)
             logging.debug('Calling {}.{}...'.format(self.service, method))
-            # .future is used to set timeout on the gRPC client
-            # old way -> res = getattr(_stub, method)(_request)
-            future_res = getattr(_stub, method).future(_request)
-            res = future_res.result(timeout=self.timeout)
-            if hasattr(res, 'error') and res.error.code:
-                logging.error('Remote rpc call error: \r\n{}'.format(res.error))
-                raise GRPCError('Remote procedure call exception', res.error)
 
-            logging.info('Fetched information: \r\n{}'.format(res))
-            return res
+            if stream:
+                res_iterator = getattr(_stub, method)(_request)
+                for res in res_iterator:
+                    self._check_grpc_error(res)
+                    yield res
+            else:
+                # .future is used to set timeout on the gRPC client
+                # old way -> res = getattr(_stub, method)(_request)
+                future_res = getattr(_stub, method).future(_request)
+                res = future_res.result(timeout=self.timeout)
+                self._check_grpc_error(res)
+
+                logging.info('Fetched information: \r\n{}'.format(res))
+                return res
+
         finally:
-            logging.debug('closing gRPC channel...')
-            self.channel.close()
-            logging.info('gRPC channel closed')
+            if not stream:
+                logging.debug('closing gRPC channel...')
+                self.channel.close()
+                logging.info('gRPC channel closed')
+
+    def _check_grpc_error(self, response):
+        if hasattr(response, 'error') and response.error.code:
+            logging.error('Remote rpc call error: \r\n{}'.format(response.error))
+            raise GRPCError('Remote procedure call exception', response.error)
 
     def call_async(self):
         pass
