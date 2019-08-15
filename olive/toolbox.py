@@ -1,3 +1,5 @@
+import hashlib
+
 from olive.exc import PythonStackNotSupported
 from marshmallow import fields
 import datetime
@@ -36,3 +38,8 @@ class MarshmallowDateTimeField(fields.DateTime):
         if isinstance(value, datetime.datetime):
             return value
         return super()._deserialize(value, attr, data)
+
+
+def generate_sha256(key):
+    hash_object = hashlib.sha256(key.encode())
+    return hash_object.hexdigest()

@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='zoodroom',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x1aolive/proto/zoodroom.proto\x12\x08zoodroom\"\x85\x01\n&ResourceOwnerPasswordCredentialRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\x12\x10\n\x08password\x18\x04 \x01(\t\x12\r\n\x05scope\x18\x05 \x03(\t\"\x99\x01\n\'ResourceOwnerPasswordCredentialResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x15\n\rrefresh_token\x18\x02 \x01(\t\x12\x12\n\nexpires_in\x18\x03 \x01(\x05\x12\r\n\x05scope\x18\x04 \x03(\t\x12\x1e\n\x05\x65rror\x18\x05 \x01(\x0b\x32\x0f.zoodroom.Error\"\xa1\x01\n\x13\x43reateClientRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\x12\x18\n\x10redirection_uris\x18\x03 \x03(\t\x12\x10\n\x08\x66ullname\x18\x04 \x01(\t\x12\x0c\n\x04logo\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x06 \x01(\t\x12\x11\n\tis_active\x18\x07 \x01(\x08\"G\n\x14\x43reateClientResponse\x12\x0f\n\x07\x63reated\x18\x01 \x01(\x08\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"C\n\x18VerifyAccessTokenRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x02 \x01(\t\";\n\x19VerifyAccessTokenResponse\x12\x1e\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x0f.zoodroom.Error\"/\n\x1aGetClientByClientIdRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\"\xb6\x01\n\x1bGetClientByClientIdResponse\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\x12\x18\n\x10redirection_uris\x18\x03 \x03(\t\x12\x10\n\x08\x66ullname\x18\x04 \x01(\t\x12\x0c\n\x04logo\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x06 \x01(\t\x12\x1e\n\x05\x65rror\x18\x07 \x01(\x0b\x32\x0f.zoodroom.Error\"y\n\x13RefreshTokenRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\x12\x15\n\rrefresh_token\x18\x03 \x01(\t\x12\x12\n\ngrant_type\x18\x04 \x01(\t\x12\r\n\x05scope\x18\x05 \x03(\t\"\x86\x01\n\x14RefreshTokenResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x15\n\rrefresh_token\x18\x02 \x01(\t\x12\r\n\x05scope\x18\x03 \x03(\t\x12\x12\n\nexpires_in\x18\x04 \x01(\x05\x12\x1e\n\x05\x65rror\x18\x05 \x01(\x0b\x32\x0f.zoodroom.Error\"5\n\x0eSurveyQuestion\x12\x13\n\x0bquestion_id\x18\x01 \x01(\t\x12\x0e\n\x06rating\x18\x02 \x01(\x05\"\xad\x01\n\x10\x41\x64\x64SurveyRequest\x12+\n\tquestions\x18\x01 \x03(\x0b\x32\x18.zoodroom.SurveyQuestion\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x12\x10\n\x08staff_id\x18\x03 \x01(\t\x12\x16\n\x0ereservation_id\x18\x04 \x01(\t\x12\x0e\n\x06status\x18\x05 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x06 \x01(\t\x12\x10\n\x08platform\x18\x07 \x01(\t\"F\n\x11\x41\x64\x64SurveyResponse\x12\x11\n\tsurvey_id\x18\x01 \x01(\t\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"\x91\x01\n\x12\x41\x64\x64QuestionRequest\x12&\n\x05title\x18\x01 \x01(\x0b\x32\x17.zoodroom.QuestionTitle\x12\x12\n\ninclude_in\x18\x02 \x03(\t\x12\x0e\n\x06weight\x18\x03 \x01(\x05\x12\r\n\x05order\x18\x04 \x01(\x05\x12\x0e\n\x06status\x18\x05 \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\x06 \x01(\t\"4\n\rQuestionTitle\x12\x0f\n\x07on_rate\x18\x01 \x01(\t\x12\x12\n\non_display\x18\x02 \x01(\t\"J\n\x13\x41\x64\x64QuestionResponse\x12\x13\n\x0bquestion_id\x18\x01 \x01(\t\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"-\n\x16GetQuestionByIdRequest\x12\x13\n\x0bquestion_id\x18\x01 \x01(\t\"\xec\x01\n\x17GetQuestionByIdResponse\x12\x0b\n\x03_id\x18\x01 \x01(\t\x12\'\n\x06ranges\x18\x02 \x03(\x0b\x32\x17.zoodroom.QuestionRange\x12\x10\n\x08\x63\x61tegory\x18\x03 \x01(\t\x12&\n\x05title\x18\x04 \x01(\x0b\x32\x17.zoodroom.QuestionTitle\x12\r\n\x05order\x18\x05 \x01(\x05\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x12\n\ninclude_in\x18\x07 \x03(\t\x12\x0e\n\x06weight\x18\x08 \x01(\x05\x12\x1e\n\x05\x65rror\x18\t \x01(\x0b\x32\x0f.zoodroom.Error\">\n\rQuestionRange\x12\r\n\x05\x63olor\x18\x01 \x01(\t\x12\r\n\x05range\x18\x02 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t\",\n\x15\x44\x65leteQuestionRequest\x12\x13\n\x0bquestion_id\x18\x01 \x01(\t\"L\n\x16\x44\x65leteQuestionResponse\x12\x12\n\nis_deleted\x18\x01 \x01(\x08\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"\xa9\x01\n\x15UpdateQuestionRequest\x12\x13\n\x0bquestion_id\x18\x01 \x01(\t\x12&\n\x05title\x18\x02 \x01(\x0b\x32\x17.zoodroom.QuestionTitle\x12\x12\n\ninclude_in\x18\x03 \x03(\t\x12\x0e\n\x06weight\x18\x04 \x01(\x05\x12\r\n\x05order\x18\x05 \x01(\x05\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\x07 \x01(\t\"L\n\x16UpdateQuestionResponse\x12\x12\n\nis_updated\x18\x01 \x01(\x08\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"\xbd\x01\n\x08Question\x12\x0b\n\x03_id\x18\x01 \x01(\t\x12\'\n\x06ranges\x18\x02 \x03(\x0b\x32\x17.zoodroom.QuestionRange\x12\x10\n\x08\x63\x61tegory\x18\x03 \x01(\t\x12&\n\x05title\x18\x04 \x01(\x0b\x32\x17.zoodroom.QuestionTitle\x12\r\n\x05order\x18\x05 \x01(\x05\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x12\n\ninclude_in\x18\x07 \x03(\t\x12\x0e\n\x06weight\x18\x08 \x01(\x05\"\x15\n\x13GetQuestionsRequest\"]\n\x14GetQuestionsResponse\x12%\n\tquestions\x18\x01 \x03(\x0b\x32\x12.zoodroom.Question\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"9\n\x1fGetSurveyByReservationIdRequest\x12\x16\n\x0ereservation_id\x18\x01 \x01(\t\"\x80\x02\n GetSurveyByReservationIdResponse\x12\x0b\n\x03_id\x18\x01 \x01(\t\x12+\n\tquestions\x18\x02 \x03(\x0b\x32\x18.zoodroom.SurveyQuestion\x12\x0f\n\x07user_id\x18\x03 \x01(\t\x12\x10\n\x08staff_id\x18\x04 \x01(\t\x12\x16\n\x0ereservation_id\x18\x05 \x01(\t\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x07 \x01(\t\x12\x10\n\x08platform\x18\x08 \x01(\t\x12\x14\n\x0ctotal_rating\x18\t \x01(\x05\x12\x1e\n\x05\x65rror\x18\n \x01(\x0b\x32\x0f.zoodroom.Error\"0\n\x11GetSurveysRequest\x12\r\n\x05limit\x18\x01 \x01(\x05\x12\x0c\n\x04skip\x18\x02 \x01(\x05\"l\n\x12GetSurveysResponse\x12!\n\x07surveys\x18\x01 \x03(\x0b\x32\x10.zoodroom.Survey\x12\x13\n\x0btotal_count\x18\x02 \x01(\x05\x12\x1e\n\x05\x65rror\x18\x03 \x01(\x0b\x32\x0f.zoodroom.Error\"\xc6\x01\n\x06Survey\x12\x0b\n\x03_id\x18\x01 \x01(\t\x12+\n\tquestions\x18\x02 \x03(\x0b\x32\x18.zoodroom.SurveyQuestion\x12\x0f\n\x07user_id\x18\x03 \x01(\t\x12\x10\n\x08staff_id\x18\x04 \x01(\t\x12\x16\n\x0ereservation_id\x18\x05 \x01(\t\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x07 \x01(\t\x12\x10\n\x08platform\x18\x08 \x01(\t\x12\x14\n\x0ctotal_rating\x18\t \x01(\x05\"7\n\x05\x45rror\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0f\n\x07\x64\x65tails\x18\x03 \x03(\t2\x85\x04\n\x10\x43ranberryService\x12\x88\x01\n\x1fResourceOwnerPasswordCredential\x12\x30.zoodroom.ResourceOwnerPasswordCredentialRequest\x1a\x31.zoodroom.ResourceOwnerPasswordCredentialResponse\"\x00\x12O\n\x0c\x43reateClient\x12\x1d.zoodroom.CreateClientRequest\x1a\x1e.zoodroom.CreateClientResponse\"\x00\x12^\n\x11VerifyAccessToken\x12\".zoodroom.VerifyAccessTokenRequest\x1a#.zoodroom.VerifyAccessTokenResponse\"\x00\x12\x64\n\x13GetClientByClientId\x12$.zoodroom.GetClientByClientIdRequest\x1a%.zoodroom.GetClientByClientIdResponse\"\x00\x12O\n\x0cRefreshToken\x12\x1d.zoodroom.RefreshTokenRequest\x1a\x1e.zoodroom.RefreshTokenResponse\"\x00\x32\xbd\x05\n\x0cMangoService\x12L\n\x0b\x41\x64\x64Question\x12\x1c.zoodroom.AddQuestionRequest\x1a\x1d.zoodroom.AddQuestionResponse\"\x00\x12X\n\x0fGetQuestionById\x12 .zoodroom.GetQuestionByIdRequest\x1a!.zoodroom.GetQuestionByIdResponse\"\x00\x12U\n\x0e\x44\x65leteQuestion\x12\x1f.zoodroom.DeleteQuestionRequest\x1a .zoodroom.DeleteQuestionResponse\"\x00\x12U\n\x0eUpdateQuestion\x12\x1f.zoodroom.UpdateQuestionRequest\x1a .zoodroom.UpdateQuestionResponse\"\x00\x12O\n\x0cGetQuestions\x12\x1d.zoodroom.GetQuestionsRequest\x1a\x1e.zoodroom.GetQuestionsResponse\"\x00\x12\x46\n\tAddSurvey\x12\x1a.zoodroom.AddSurveyRequest\x1a\x1b.zoodroom.AddSurveyResponse\"\x00\x12s\n\x18GetSurveyByReservationId\x12).zoodroom.GetSurveyByReservationIdRequest\x1a*.zoodroom.GetSurveyByReservationIdResponse\"\x00\x12I\n\nGetSurveys\x12\x1b.zoodroom.GetSurveysRequest\x1a\x1c.zoodroom.GetSurveysResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x1aolive/proto/zoodroom.proto\x12\x08zoodroom\"\x85\x01\n&ResourceOwnerPasswordCredentialRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\x12\x10\n\x08password\x18\x04 \x01(\t\x12\r\n\x05scope\x18\x05 \x03(\t\"\x99\x01\n\'ResourceOwnerPasswordCredentialResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x15\n\rrefresh_token\x18\x02 \x01(\t\x12\x12\n\nexpires_in\x18\x03 \x01(\x05\x12\r\n\x05scope\x18\x04 \x03(\t\x12\x1e\n\x05\x65rror\x18\x05 \x01(\x0b\x32\x0f.zoodroom.Error\"\xa1\x01\n\x13\x43reateClientRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\x12\x18\n\x10redirection_uris\x18\x03 \x03(\t\x12\x10\n\x08\x66ullname\x18\x04 \x01(\t\x12\x0c\n\x04logo\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x06 \x01(\t\x12\x11\n\tis_active\x18\x07 \x01(\x08\"G\n\x14\x43reateClientResponse\x12\x0f\n\x07\x63reated\x18\x01 \x01(\x08\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"C\n\x18VerifyAccessTokenRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x02 \x01(\t\";\n\x19VerifyAccessTokenResponse\x12\x1e\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x0f.zoodroom.Error\"/\n\x1aGetClientByClientIdRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\"\xb6\x01\n\x1bGetClientByClientIdResponse\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\x12\x18\n\x10redirection_uris\x18\x03 \x03(\t\x12\x10\n\x08\x66ullname\x18\x04 \x01(\t\x12\x0c\n\x04logo\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x06 \x01(\t\x12\x1e\n\x05\x65rror\x18\x07 \x01(\x0b\x32\x0f.zoodroom.Error\"y\n\x13RefreshTokenRequest\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\x12\x15\n\rrefresh_token\x18\x03 \x01(\t\x12\x12\n\ngrant_type\x18\x04 \x01(\t\x12\r\n\x05scope\x18\x05 \x03(\t\"\x86\x01\n\x14RefreshTokenResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x15\n\rrefresh_token\x18\x02 \x01(\t\x12\r\n\x05scope\x18\x03 \x03(\t\x12\x12\n\nexpires_in\x18\x04 \x01(\x05\x12\x1e\n\x05\x65rror\x18\x05 \x01(\x0b\x32\x0f.zoodroom.Error\"5\n\x0eSurveyQuestion\x12\x13\n\x0bquestion_id\x18\x01 \x01(\t\x12\x0e\n\x06rating\x18\x02 \x01(\x05\"\xad\x01\n\x10\x41\x64\x64SurveyRequest\x12+\n\tquestions\x18\x01 \x03(\x0b\x32\x18.zoodroom.SurveyQuestion\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x12\x10\n\x08staff_id\x18\x03 \x01(\t\x12\x16\n\x0ereservation_id\x18\x04 \x01(\t\x12\x0e\n\x06status\x18\x05 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x06 \x01(\t\x12\x10\n\x08platform\x18\x07 \x01(\t\"F\n\x11\x41\x64\x64SurveyResponse\x12\x11\n\tsurvey_id\x18\x01 \x01(\t\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"\x91\x01\n\x12\x41\x64\x64QuestionRequest\x12&\n\x05title\x18\x01 \x01(\x0b\x32\x17.zoodroom.QuestionTitle\x12\x12\n\ninclude_in\x18\x02 \x03(\t\x12\x0e\n\x06weight\x18\x03 \x01(\x05\x12\r\n\x05order\x18\x04 \x01(\x05\x12\x0e\n\x06status\x18\x05 \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\x06 \x01(\t\"4\n\rQuestionTitle\x12\x0f\n\x07on_rate\x18\x01 \x01(\t\x12\x12\n\non_display\x18\x02 \x01(\t\"J\n\x13\x41\x64\x64QuestionResponse\x12\x13\n\x0bquestion_id\x18\x01 \x01(\t\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"-\n\x16GetQuestionByIdRequest\x12\x13\n\x0bquestion_id\x18\x01 \x01(\t\"\xec\x01\n\x17GetQuestionByIdResponse\x12\x0b\n\x03_id\x18\x01 \x01(\t\x12\'\n\x06ranges\x18\x02 \x03(\x0b\x32\x17.zoodroom.QuestionRange\x12\x10\n\x08\x63\x61tegory\x18\x03 \x01(\t\x12&\n\x05title\x18\x04 \x01(\x0b\x32\x17.zoodroom.QuestionTitle\x12\r\n\x05order\x18\x05 \x01(\x05\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x12\n\ninclude_in\x18\x07 \x03(\t\x12\x0e\n\x06weight\x18\x08 \x01(\x05\x12\x1e\n\x05\x65rror\x18\t \x01(\x0b\x32\x0f.zoodroom.Error\">\n\rQuestionRange\x12\r\n\x05\x63olor\x18\x01 \x01(\t\x12\r\n\x05range\x18\x02 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t\",\n\x15\x44\x65leteQuestionRequest\x12\x13\n\x0bquestion_id\x18\x01 \x01(\t\"L\n\x16\x44\x65leteQuestionResponse\x12\x12\n\nis_deleted\x18\x01 \x01(\x08\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"\xa9\x01\n\x15UpdateQuestionRequest\x12\x13\n\x0bquestion_id\x18\x01 \x01(\t\x12&\n\x05title\x18\x02 \x01(\x0b\x32\x17.zoodroom.QuestionTitle\x12\x12\n\ninclude_in\x18\x03 \x03(\t\x12\x0e\n\x06weight\x18\x04 \x01(\x05\x12\r\n\x05order\x18\x05 \x01(\x05\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\x07 \x01(\t\"L\n\x16UpdateQuestionResponse\x12\x12\n\nis_updated\x18\x01 \x01(\x08\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"\xbd\x01\n\x08Question\x12\x0b\n\x03_id\x18\x01 \x01(\t\x12\'\n\x06ranges\x18\x02 \x03(\x0b\x32\x17.zoodroom.QuestionRange\x12\x10\n\x08\x63\x61tegory\x18\x03 \x01(\t\x12&\n\x05title\x18\x04 \x01(\x0b\x32\x17.zoodroom.QuestionTitle\x12\r\n\x05order\x18\x05 \x01(\x05\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x12\n\ninclude_in\x18\x07 \x03(\t\x12\x0e\n\x06weight\x18\x08 \x01(\x05\"\x15\n\x13GetQuestionsRequest\"]\n\x14GetQuestionsResponse\x12%\n\tquestions\x18\x01 \x03(\x0b\x32\x12.zoodroom.Question\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"9\n\x1fGetSurveyByReservationIdRequest\x12\x16\n\x0ereservation_id\x18\x01 \x01(\t\"\x80\x02\n GetSurveyByReservationIdResponse\x12\x0b\n\x03_id\x18\x01 \x01(\t\x12+\n\tquestions\x18\x02 \x03(\x0b\x32\x18.zoodroom.SurveyQuestion\x12\x0f\n\x07user_id\x18\x03 \x01(\t\x12\x10\n\x08staff_id\x18\x04 \x01(\t\x12\x16\n\x0ereservation_id\x18\x05 \x01(\t\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x07 \x01(\t\x12\x10\n\x08platform\x18\x08 \x01(\t\x12\x14\n\x0ctotal_rating\x18\t \x01(\x05\x12\x1e\n\x05\x65rror\x18\n \x01(\x0b\x32\x0f.zoodroom.Error\"0\n\x11GetSurveysRequest\x12\r\n\x05limit\x18\x01 \x01(\x05\x12\x0c\n\x04skip\x18\x02 \x01(\x05\"l\n\x12GetSurveysResponse\x12!\n\x07surveys\x18\x01 \x03(\x0b\x32\x10.zoodroom.Survey\x12\x13\n\x0btotal_count\x18\x02 \x01(\x05\x12\x1e\n\x05\x65rror\x18\x03 \x01(\x0b\x32\x0f.zoodroom.Error\"\xc6\x01\n\x06Survey\x12\x0b\n\x03_id\x18\x01 \x01(\t\x12+\n\tquestions\x18\x02 \x03(\x0b\x32\x18.zoodroom.SurveyQuestion\x12\x0f\n\x07user_id\x18\x03 \x01(\t\x12\x10\n\x08staff_id\x18\x04 \x01(\t\x12\x16\n\x0ereservation_id\x18\x05 \x01(\t\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x07 \x01(\t\x12\x10\n\x08platform\x18\x08 \x01(\t\x12\x14\n\x0ctotal_rating\x18\t \x01(\x05\"\x19\n\x17StreamGetSurveysRequest\"\\\n\x18StreamGetSurveysResponse\x12 \n\x06survey\x18\x01 \x01(\x0b\x32\x10.zoodroom.Survey\x12\x1e\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.zoodroom.Error\"7\n\x05\x45rror\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0f\n\x07\x64\x65tails\x18\x03 \x03(\t2\x85\x04\n\x10\x43ranberryService\x12\x88\x01\n\x1fResourceOwnerPasswordCredential\x12\x30.zoodroom.ResourceOwnerPasswordCredentialRequest\x1a\x31.zoodroom.ResourceOwnerPasswordCredentialResponse\"\x00\x12O\n\x0c\x43reateClient\x12\x1d.zoodroom.CreateClientRequest\x1a\x1e.zoodroom.CreateClientResponse\"\x00\x12^\n\x11VerifyAccessToken\x12\".zoodroom.VerifyAccessTokenRequest\x1a#.zoodroom.VerifyAccessTokenResponse\"\x00\x12\x64\n\x13GetClientByClientId\x12$.zoodroom.GetClientByClientIdRequest\x1a%.zoodroom.GetClientByClientIdResponse\"\x00\x12O\n\x0cRefreshToken\x12\x1d.zoodroom.RefreshTokenRequest\x1a\x1e.zoodroom.RefreshTokenResponse\"\x00\x32\x9c\x06\n\x0cMangoService\x12L\n\x0b\x41\x64\x64Question\x12\x1c.zoodroom.AddQuestionRequest\x1a\x1d.zoodroom.AddQuestionResponse\"\x00\x12X\n\x0fGetQuestionById\x12 .zoodroom.GetQuestionByIdRequest\x1a!.zoodroom.GetQuestionByIdResponse\"\x00\x12U\n\x0e\x44\x65leteQuestion\x12\x1f.zoodroom.DeleteQuestionRequest\x1a .zoodroom.DeleteQuestionResponse\"\x00\x12U\n\x0eUpdateQuestion\x12\x1f.zoodroom.UpdateQuestionRequest\x1a .zoodroom.UpdateQuestionResponse\"\x00\x12O\n\x0cGetQuestions\x12\x1d.zoodroom.GetQuestionsRequest\x1a\x1e.zoodroom.GetQuestionsResponse\"\x00\x12\x46\n\tAddSurvey\x12\x1a.zoodroom.AddSurveyRequest\x1a\x1b.zoodroom.AddSurveyResponse\"\x00\x12s\n\x18GetSurveyByReservationId\x12).zoodroom.GetSurveyByReservationIdRequest\x1a*.zoodroom.GetSurveyByReservationIdResponse\"\x00\x12I\n\nGetSurveys\x12\x1b.zoodroom.GetSurveysRequest\x1a\x1c.zoodroom.GetSurveysResponse\"\x00\x12]\n\x10StreamGetSurveys\x12!.zoodroom.StreamGetSurveysRequest\x1a\".zoodroom.StreamGetSurveysResponse\"\x00\x30\x01\x62\x06proto3')
 )
 
 
@@ -1617,6 +1617,68 @@ _SURVEY = _descriptor.Descriptor(
 )
 
 
+_STREAMGETSURVEYSREQUEST = _descriptor.Descriptor(
+  name='StreamGetSurveysRequest',
+  full_name='zoodroom.StreamGetSurveysRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3487,
+  serialized_end=3512,
+)
+
+
+_STREAMGETSURVEYSRESPONSE = _descriptor.Descriptor(
+  name='StreamGetSurveysResponse',
+  full_name='zoodroom.StreamGetSurveysResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='survey', full_name='zoodroom.StreamGetSurveysResponse.survey', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='zoodroom.StreamGetSurveysResponse.error', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3514,
+  serialized_end=3606,
+)
+
+
 _ERROR = _descriptor.Descriptor(
   name='Error',
   full_name='zoodroom.Error',
@@ -1657,8 +1719,8 @@ _ERROR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3487,
-  serialized_end=3542,
+  serialized_start=3608,
+  serialized_end=3663,
 )
 
 _RESOURCEOWNERPASSWORDCREDENTIALRESPONSE.fields_by_name['error'].message_type = _ERROR
@@ -1685,6 +1747,8 @@ _GETSURVEYBYRESERVATIONIDRESPONSE.fields_by_name['error'].message_type = _ERROR
 _GETSURVEYSRESPONSE.fields_by_name['surveys'].message_type = _SURVEY
 _GETSURVEYSRESPONSE.fields_by_name['error'].message_type = _ERROR
 _SURVEY.fields_by_name['questions'].message_type = _SURVEYQUESTION
+_STREAMGETSURVEYSRESPONSE.fields_by_name['survey'].message_type = _SURVEY
+_STREAMGETSURVEYSRESPONSE.fields_by_name['error'].message_type = _ERROR
 DESCRIPTOR.message_types_by_name['ResourceOwnerPasswordCredentialRequest'] = _RESOURCEOWNERPASSWORDCREDENTIALREQUEST
 DESCRIPTOR.message_types_by_name['ResourceOwnerPasswordCredentialResponse'] = _RESOURCEOWNERPASSWORDCREDENTIALRESPONSE
 DESCRIPTOR.message_types_by_name['CreateClientRequest'] = _CREATECLIENTREQUEST
@@ -1716,6 +1780,8 @@ DESCRIPTOR.message_types_by_name['GetSurveyByReservationIdResponse'] = _GETSURVE
 DESCRIPTOR.message_types_by_name['GetSurveysRequest'] = _GETSURVEYSREQUEST
 DESCRIPTOR.message_types_by_name['GetSurveysResponse'] = _GETSURVEYSRESPONSE
 DESCRIPTOR.message_types_by_name['Survey'] = _SURVEY
+DESCRIPTOR.message_types_by_name['StreamGetSurveysRequest'] = _STREAMGETSURVEYSREQUEST
+DESCRIPTOR.message_types_by_name['StreamGetSurveysResponse'] = _STREAMGETSURVEYSRESPONSE
 DESCRIPTOR.message_types_by_name['Error'] = _ERROR
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -1936,6 +2002,20 @@ Survey = _reflection.GeneratedProtocolMessageType('Survey', (_message.Message,),
   })
 _sym_db.RegisterMessage(Survey)
 
+StreamGetSurveysRequest = _reflection.GeneratedProtocolMessageType('StreamGetSurveysRequest', (_message.Message,), {
+  'DESCRIPTOR' : _STREAMGETSURVEYSREQUEST,
+  '__module__' : 'olive.proto.zoodroom_pb2'
+  # @@protoc_insertion_point(class_scope:zoodroom.StreamGetSurveysRequest)
+  })
+_sym_db.RegisterMessage(StreamGetSurveysRequest)
+
+StreamGetSurveysResponse = _reflection.GeneratedProtocolMessageType('StreamGetSurveysResponse', (_message.Message,), {
+  'DESCRIPTOR' : _STREAMGETSURVEYSRESPONSE,
+  '__module__' : 'olive.proto.zoodroom_pb2'
+  # @@protoc_insertion_point(class_scope:zoodroom.StreamGetSurveysResponse)
+  })
+_sym_db.RegisterMessage(StreamGetSurveysResponse)
+
 Error = _reflection.GeneratedProtocolMessageType('Error', (_message.Message,), {
   'DESCRIPTOR' : _ERROR,
   '__module__' : 'olive.proto.zoodroom_pb2'
@@ -1951,8 +2031,8 @@ _CRANBERRYSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=3545,
-  serialized_end=4062,
+  serialized_start=3666,
+  serialized_end=4183,
   methods=[
   _descriptor.MethodDescriptor(
     name='ResourceOwnerPasswordCredential',
@@ -2011,8 +2091,8 @@ _MANGOSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   serialized_options=None,
-  serialized_start=4065,
-  serialized_end=4766,
+  serialized_start=4186,
+  serialized_end=4982,
   methods=[
   _descriptor.MethodDescriptor(
     name='AddQuestion',
@@ -2084,6 +2164,15 @@ _MANGOSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_GETSURVEYSREQUEST,
     output_type=_GETSURVEYSRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='StreamGetSurveys',
+    full_name='zoodroom.MangoService.StreamGetSurveys',
+    index=8,
+    containing_service=None,
+    input_type=_STREAMGETSURVEYSREQUEST,
+    output_type=_STREAMGETSURVEYSRESPONSE,
     serialized_options=None,
   ),
 ])
