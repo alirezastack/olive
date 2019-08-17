@@ -80,7 +80,7 @@ class RPCClient:
     def __init__(self, service, timeout=_DEFAULT_RPC_CALL_TIMEOUT):
         self.service = service.lower()
         self.timeout = timeout
-        host = os.environ.get('{}_HOST'.format(self.service.upper()), _DEFAULT_SERVICE_HOST)
+        host = os.environ.get('{}_HOST'.format(self.service.upper()), self.service)
         port = os.environ.get('{}_PORT'.format(self.service.upper()), _DEFAULT_SERVICE_PORT)
         logging.debug('connecting to {}:{} {} gRPC...'.format(host, port, self.service))
         # get service address port by its environment variable
