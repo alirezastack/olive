@@ -16,7 +16,7 @@ _DEFAULT_SERVICE_HOST = '[::]'
 _DEFAULT_SERVICE_PORT = '9000'
 
 # timeout in seconds
-_DEFAULT_RPC_CALL_TIMEOUT = 3
+_DEFAULT_RPC_CALL_TIMEOUT = 10
 
 # number of retries in case of rpc call failure
 _DEFAULT_RETRY_COUNT = 3
@@ -96,10 +96,9 @@ class RPCClient:
            tries=_DEFAULT_RETRY_COUNT,
            delay=_DEFAULT_RETRY_DELAY,
            backoff=_DEFAULT_RETRY_BACKOFF)
-    def call(self, method, stream=False, **kwargs):
+    def call(self, method, **kwargs):
         """
         :param method: remote gRPC method name
-        :param stream: stream response to client
         :param kwargs: remote method input parameters
         :return: method response
         """
@@ -110,26 +109,40 @@ class RPCClient:
             _request = getattr(zoodroom_pb2, '{}Request'.format(method))(**kwargs)
             logging.debug('Calling {}.{}...'.format(self.service, method))
 
-            if stream:
-                res_iterator = getattr(_stub, method)(_request)
-                for res in res_iterator:
-                    self._check_grpc_error(res)
-                    yield res
-            else:
-                # .future is used to set timeout on the gRPC client
-                # old way -> res = getattr(_stub, method)(_request)
-                future_res = getattr(_stub, method).future(_request)
-                res = future_res.result(timeout=self.timeout)
-                self._check_grpc_error(res)
+            # .future is used to set timeout on the gRPC client
+            # old way -> res = getattr(_stub, method)(_request)
+            future_res = getattr(_stub, method).future(_request)
+            res = future_res.result(timeout=self.timeout)
+            self._check_grpc_error(res)
 
-                logging.info('Fetched information: \r\n{}'.format(res))
-                return res
+            logging.info('Fetched information: \r\n{}'.format(res))
+            return res
 
         finally:
-            if not stream:
-                logging.debug('closing gRPC channel...')
-                self.channel.close()
-                logging.info('gRPC channel closed')
+            logging.debug('closing gRPC channel...')
+            self.channel.close()
+            logging.info('gRPC channel closed')
+
+    @retry(exceptions=(RpcError,),
+           tries=_DEFAULT_RETRY_COUNT,
+           delay=_DEFAULT_RETRY_DELAY,
+           backoff=_DEFAULT_RETRY_BACKOFF)
+    def stream(self, method, **kwargs):
+        """
+        :param method: remote gRPC method name
+        :param kwargs: remote method input parameters
+        :return: method response
+        """
+        logging.debug('getting {} stub'.format(self.service))
+        _stub = getattr(zoodroom_pb2_grpc, '{}ServiceStub'.format(self.service.capitalize()))(self.channel)
+        logging.debug('form gRPC request with input parameters')
+        _request = getattr(zoodroom_pb2, '{}Request'.format(method))(**kwargs)
+        logging.debug('Calling {}.{}...'.format(self.service, method))
+
+        res_iterator = getattr(_stub, method)(_request)
+        for res in res_iterator:
+            self._check_grpc_error(res)
+            yield res
 
     def _check_grpc_error(self, response):
         if hasattr(response, 'error') and response.error.code:
