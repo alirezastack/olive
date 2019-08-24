@@ -57,3 +57,7 @@ class DocumentNotFound(Exception):
 
 class InvalidFilter(Exception):
     pass
+
+
+class FetchError(Exception):
+    pass
