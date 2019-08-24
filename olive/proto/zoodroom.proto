@@ -223,8 +223,13 @@ message GetSurveyByReservationIdResponse {
 }
 
 message GetSurveysRequest {
-    int32 limit = 1;
+    int32 page_size = 1;
     int32 skip = 2;
+    string checkout_start = 3;
+    string checkout_end = 4;
+    int32 complex = 5;
+    int32 city = 6;
+    string status = 7;
 }
 
 message GetSurveysResponse {

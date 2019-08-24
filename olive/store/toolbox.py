@@ -16,6 +16,15 @@ def to_object_id(identifier):
     return object_id
 
 
+def int_to_object_id(identifier, to_str=True):
+    s = str(identifier)
+    s = '0' * (24 - len(s)) + s
+    if to_str:
+        return s
+
+    return bson.ObjectId(s)
+
+
 class MongoObjectId(fields.Field):
     def serialize(self, attr, obj, accessor=None, **kwargs):
         if attr in obj:

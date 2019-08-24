@@ -9,3 +9,5 @@ retry
 pymongo
 marshmallow
 ujson
+
+requests==2.22.0
