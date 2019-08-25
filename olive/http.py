@@ -1,4 +1,4 @@
-from olive.exc import FetchError
+from olive.exc import FetchError, DocumentNotFound
 import requests
 
 
@@ -8,6 +8,10 @@ class Request(object):
         self.headers = headers
         self.app = app
 
+        # Flask has logger
+        if 'logger' in dir(app):
+            self.app.log = app.logger
+
     def get(self):
         self.app.log.debug('getting data from zoodroom-backend: {}'.format(self.url))
         res = requests.get(url=self.url,
@@ -16,7 +20,10 @@ class Request(object):
 
         self.app.log.info('status-code: {}'.format(res.status_code))
         if res.status_code != requests.codes.OK:
-            raise FetchError
+            if res.status_code == requests.codes.NOT_FOUND:
+                raise DocumentNotFound('requested resource not found on the server')
+
+            raise FetchError('Could not fetch resource, status-code: {}'.format(res.status_code))
 
         if res.json()['status'] != 200:
             raise FetchError
