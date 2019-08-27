@@ -23,6 +23,7 @@ class Request(object):
             if res.status_code == requests.codes.NOT_FOUND:
                 raise DocumentNotFound('requested resource not found on the server')
 
+            self.app.log.error('leagacy API error: {}'.format(res.text))
             raise FetchError('Could not fetch resource, status-code: {}'.format(res.status_code))
 
         if res.json()['status'] != 200:
