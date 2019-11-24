@@ -20,7 +20,7 @@ Olive is a module to have shared resources in one place. Some core methods like 
 For installation of Olive, below link is added to requirements.txt of the service:
 
 ```
--e git+https://oauth2:Q8HLiBk95Rkqzy2Q7Kgh@git.zoodroom.com/basket/olive.git@master#egg=olive
+-e git+https://oauth2:YOUR_OAUTH_TOKEN@git.YOUR_REPO.com/basket/olive.git@master#egg=olive
 ```
 
 # Definition:
